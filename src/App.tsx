@@ -108,6 +108,7 @@ export default function App() {
     setMode('menu');
     setGrade(null);
     setGameStatus('start');
+    setIsNameEntered(false);
     setShowExitConfirm(false);
     setTimeLeft(30);
   };
