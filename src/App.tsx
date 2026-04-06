@@ -310,36 +310,66 @@ export default function App() {
 
   const currentQuestion = questions[currentIndex];
 
-  if (!isNameEntered) {
+ if (!isNameEntered) {
     return (
-      <div className="min-h-screen flex items-center justify-center p-4">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="anime-card p-8 w-full max-w-md text-center space-y-6"
-        >
-          <div className="bg-yellow-400 anime-border p-4 rounded-full inline-block">
-            <User size={48} className="text-black" />
-          </div>
-          <h2 className="text-3xl font-black italic">冒險者登錄</h2>
-          <p className="font-bold text-slate-600">請輸入你的名字，開啟學習冒險！</p>
+      <div 
+        className="min-h-screen w-full flex items-center justify-center relative overflow-hidden bg-cover bg-center bg-no-repeat"
+        style={{ 
+          backgroundImage: `url('https://github.com/emilychen89405264-prog/For-WE/blob/main/multiplication_homepage.png?raw=true')`,
+          backgroundColor: '#e5d1b8' // 防止全黑的墊底色
+        }}
+      >
+        {/* 全域背景點擊微暗效果 */}
+        <div className="absolute inset-0 bg-black/10 active:bg-black/30 transition-colors pointer-events-none" />
+
+        {/* 1. 冒險者姓名輸入框 - 修正位置：從 44.5% 調降至 48% */}
+        <div className="absolute top-[48%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[34%] h-[12%]">
           <input
             type="text"
             value={playerName}
             onChange={(e) => setPlayerName(e.target.value)}
             onKeyDown={(e) => e.key === 'Enter' && playerName && setIsNameEntered(true)}
-            placeholder="冒險者姓名"
-            className="w-full text-center text-2xl font-black p-4 bg-slate-50 anime-border focus:bg-white outline-none rounded-xl text-black"
+            placeholder="點擊輸入姓名"
+            className="w-full h-full bg-transparent border-none text-center text-3xl md:text-4xl font-black text-[#7a4a3a] outline-none placeholder:text-[#b08d75]/50"
             autoFocus
           />
-          <button
+        </div>
+
+        {/* 下方黏土風格按鈕區 (存檔、Leg's go!!, 退出) */}
+        <div className="absolute bottom-[13.5%] left-1/2 -translate-x-1/2 w-[76%] h-[15%] flex gap-[3%] items-stretch">
+          
+          {/* 2. 存檔按鈕 感應區 (左側藍色) */}
+          <motion.button 
+            onClick={saveGame}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.9 }}
+            className="flex-1 bg-white/0 hover:bg-white/10 rounded-[30px] transition-colors cursor-pointer"
+          />
+
+          {/* 3. Leg's go!! 按鈕 感應區 (中間綠色) */}
+          <motion.button 
             onClick={() => playerName && setIsNameEntered(true)}
             disabled={!playerName}
-            className="w-full bg-orange-500 text-white font-black text-xl py-4 anime-button"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.9 }}
+            className="flex-1 bg-white/0 hover:bg-white/10 rounded-[40px] transition-colors cursor-pointer group relative disabled:cursor-not-allowed disabled:grayscale"
           >
-            出發！
-          </button>
-        </motion.div>
+            {/* 未輸入姓名時的懸停提示 */}
+            {!playerName && (
+              <div className="absolute -top-10 left-1/2 -translate-x-1/2 text-red-500 font-bold bg-white px-2 py-0.5 rounded shadow opacity-0 group-hover:opacity-100 whitespace-nowrap text-xs">
+                請先輸入姓名
+              </div>
+            )}
+          </motion.button>
+
+          {/* 4. 退出按鈕 感應區 (右側紅色) */}
+          <motion.button 
+            onClick={() => setShowExitConfirm(true)}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.9 }}
+            className="flex-1 bg-white/0 hover:bg-white/10 rounded-[30px] transition-colors cursor-pointer"
+          />
+        </div>
       </div>
     );
   }
