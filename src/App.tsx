@@ -272,7 +272,7 @@ export default function App() {
 
                 {/* 5. 熱血大冒險 1-4年級垂直連結 (中央捲軸下方) */}
                 {/* 位置調整：從中間移到右側垂直按鈕區 (黃/綠/黃/橘按鈕) */}
-                <div className="absolute top-[38%] left-[50%] -translate-x-1/2 w-[16.5%] h-[46%] flex flex-col justify-between p-2">
+                <div className="absolute top-[38%] left-[50%] -translate-x-1/2 w-[16.5%] h-[52%] flex flex-col justify-between p-1">
                   {[1, 2, 3, 4].map((g) => (
                     <button key={g} onClick={() => handleStartAdventure(g as Grade)} className="h-[21%] w-full bg-transparent cursor-pointer hover:bg-white/20 rounded-2xl active:scale-95" title={`開始 ${g} 年級大冒險`} />
                   ))}
