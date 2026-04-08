@@ -150,7 +150,7 @@ export default function App() {
         {!isNameEntered ? (
           <motion.div key="login" className="min-h-screen w-full flex items-center justify-center relative bg-cover bg-center" style={{ backgroundImage: `url('https://github.com/emilychen89405264-prog/For-WE/blob/main/multiplication_homepage.png?raw=true')` }}>
             <div className="absolute top-[48%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[34%] h-[12%] flex items-center justify-center">
-              <input type="text" value={playerName} onChange={(e) => setPlayerName(e.target.value)} onKeyDown={(e) => e.key === 'Enter' && handleLogin()} className="w-full h-full bg-transparent border-none text-center text-3xl font-black text-[#7a4a3a] outline-none" placeholder="輸入姓名" />
+              <input type="text" value={playerName} onChange={(e) => setPlayerName(e.target.value)} onKeyDown={(e) => e.key === 'Enter' && handleLogin()} className="w-full h-full bg-transparent border-none text-center text-5xl font-black text-[#7a4a3a] outline-none" placeholder="輸入姓名" />
             </div>
             <div className="absolute bottom-[13.5%] left-1/2 -translate-x-1/2 w-[76%] h-[15%] flex gap-[3%]">
               <button onClick={() => playerName && handleLogin()} className="flex-1 bg-transparent cursor-pointer" />
@@ -164,8 +164,8 @@ export default function App() {
               <div className="fixed inset-0 w-full h-full bg-cover bg-center" style={{ backgroundImage: `url('https://github.com/emilychen89405264-prog/For-WE/blob/main/multiplication_mainpage.png?raw=true')` }}>
                 <div className="absolute top-[29%] left-[85%] -translate-x-1/2 -translate-y-1/2 w-[34%] h-[15%] flex items-center justify-center"><div className="text-[4vw] font-black text-[#7a4a3a]">{playerName}</div></div>
                 <div className="absolute bottom-[42%] left-[85%] -translate-x-1/2 w-[16%] h-[12%] flex items-center justify-center gap-2"><Star className="fill-[#f5ba50] text-[#f5ba50] w-10 h-10" /><span className="text-6xl font-black text-[#7a4a3a]">{stars}</span></div>
-                <button onClick={saveGame} className="absolute bottom-[17.5%] right-[19%] w-[13.5%] h-[11%] bg-transparent cursor-pointer hover:bg-white/20 rounded-3xl" />
-                <button onClick={() => setIsNameEntered(false)} className="absolute bottom-[6%] right-[4%] w-[13.5%] h-[11%] bg-transparent cursor-pointer hover:bg-white/20 rounded-3xl" />
+                <button onClick={saveGame} className="absolute bottom-[17.5%] right-[19%] w-[13.5%] h-[11%] bg-transparent cursor-pointer hover:bg-white/3 rounded-3xl" />
+                <button onClick={() => setIsNameEntered(false)} className="absolute bottom-[6%] right-[4%] w-[13.5%] h-[11%] bg-transparent cursor-pointer hover:bg-white/3 rounded-3xl" />
                 
                 {/* 模式入口修正：進入前強制初始化 */}
                 <button onClick={() => { generateNewWorkshop(); setMode('workshop'); }} className="absolute top-[16%] left-[7%] w-[26%] h-[31%] bg-transparent cursor-pointer hover:scale-105 transition-all" />
@@ -173,7 +173,7 @@ export default function App() {
                 
                 <div className="absolute top-[39%] left-[50.5%] -translate-x-1/2 w-[16.5%] h-[50%] flex flex-col justify-between">
                   {[1, 2, 3, 4].map((g) => (
-                    <button key={g} onClick={() => { setQuestions(generateQuestions(g as Grade)); setGrade(g as Grade); setMode('adventure'); setGameStatus('playing'); setCurrentIndex(0); }} className="h-[21%] w-full bg-transparent cursor-pointer hover:bg-white/30 rounded-2xl" />
+                    <button key={g} onClick={() => { setQuestions(generateQuestions(g as Grade)); setGrade(g as Grade); setMode('adventure'); setGameStatus('playing'); setCurrentIndex(0); }} className="h-[21%] w-full bg-transparent cursor-pointer hover:bg-white/3 rounded-2xl" />
                   ))}
                 </div>
                 {saveMessage && <div className="absolute top-6 left-1/2 -translate-x-1/2 bg-[#7a4a3a] text-white px-6 py-2 rounded-full font-black z-[100]">✨ {saveMessage}</div>}
@@ -200,7 +200,7 @@ export default function App() {
                               <div className="bg-blue-100 aspect-square flex items-center justify-center font-black">{row}</div>
                               {[1,2,3,4,5,6,7,8,9].map(col => {
                                 const isU = unlockedPractice.has(`${row}x${col}`);
-                                return <div key={`${row}-${col}`} className={`aspect-square flex items-center justify-center text-xs font-bold rounded border ${isU ? 'bg-orange-500 text-white border-[#7a4a3a]' : 'bg-white/40 text-transparent'}`}>{isU ? row*col : ''}</div>
+                                return <div key={`${row}-${col}`} className={`aspect-square flex items-center justify-center text-xs font-bold rounded border ${isU ? 'bg-orange-500 text-white border-[#7a4a3a]' : 'bg-white/3 text-transparent'}`}>{isU ? row*col : ''}</div>
                               })}
                             </Fragment>
                           ))}
